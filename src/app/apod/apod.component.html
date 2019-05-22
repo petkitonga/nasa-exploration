@@ -1,3 +1,15 @@
-<p>
-  apod works!
-</p>
+<div class="container">
+  <br>
+  <h3>Astronomy Photo of the Day (APOD)</h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+      Column of Dates (Today and Previous)
+    </div>
+    
+    <div class="col-md-9">
+      <app-photo-detail [photo]="apodPhoto"></app-photo-detail>
+    </div>
+
+  </div>
+</div>
