@@ -8,7 +8,6 @@ const routes: Routes = [
         path: 'apod', 
         component: ApodComponent,
         children: [
-            { path: '', redirectTo: (new Date().toISOString().split('T')[0]), pathMatch:'full' },
             { path: ':routeDate', component: PhotoDetailComponent }
         ]
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApodService } from '../services/apod.service';
-import { ApodPhoto } from './models/photo.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-apod',
@@ -9,7 +9,9 @@ import { ApodPhoto } from './models/photo.model';
 })
 export class ApodComponent implements OnInit {
 
-  constructor(private apodService: ApodService) { }
+  constructor(private apodService: ApodService, private router: Router) { 
+    this.router.navigate(['apod',(new Date().toISOString().split('T')[0]).toString()]);
+  }
 
   apodDates=[];
 
