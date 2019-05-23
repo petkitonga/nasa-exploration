@@ -5,22 +5,18 @@ import { ApodPhoto } from './models/photo.model';
 @Component({
   selector: 'app-apod',
   templateUrl: './apod.component.html',
-  styleUrls: ['./apod.component.css'],
-  providers: [ApodService]
+  styleUrls: ['./apod.component.css']
 })
 export class ApodComponent implements OnInit {
 
   constructor(private apodService: ApodService) { }
 
-  apodPhoto: ApodPhoto;
+  apodDates=[];
 
   ngOnInit() {
-    this.apodService.getPhotoToday().subscribe(
-      (response: ApodPhoto)=>{
-        console.log(response);
-        this.apodPhoto=response;
-      }
-    );
+    
+    this.apodDates.push(...this.apodService.getDatesList());
+    console.log(this.apodDates);
   }
 
 }

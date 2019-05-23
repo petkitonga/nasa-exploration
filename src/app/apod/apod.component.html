@@ -4,11 +4,18 @@
   <hr>
   <div class="row">
     <div class="col-md-3">
-      Column of Dates (Today and Previous)
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a [routerLink]="['/apod']" routerLinkActive="active">Today's Photo</a>
+        </li>
+        <li class="list-group-item" *ngFor="let date of apodDates">
+          <a [routerLink]="['/apod', date.routeDate]" routerLinkActive="active">{{date.displayDate}}</a>
+        </li>
+      </ul>
     </div>
     
     <div class="col-md-9">
-      <app-photo-detail [photo]="apodPhoto"></app-photo-detail>
+      <router-outlet></router-outlet>
     </div>
 
   </div>

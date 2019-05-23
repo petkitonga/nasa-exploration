@@ -1,5 +1,5 @@
-<app-spinner [show]="!photo"></app-spinner>
-<div *ngIf="photo">
+<app-spinner [show]="!loadingComplete"></app-spinner>
+<div *ngIf="loadingComplete">
   <h4>{{photoDate}}</h4>
   <div class="card">
     <img class="card-img-top" [src]="photo.url" height="300px" alt="Photo of the Day!">

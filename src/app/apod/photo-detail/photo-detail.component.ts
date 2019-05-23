@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApodPhoto } from '../models/photo.model';
+import { ApodService } from 'src/app/services/apod.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component(
   {
@@ -8,20 +10,32 @@ import { ApodPhoto } from '../models/photo.model';
   styleUrls: ['./photo-detail.component.css']
 })
 
-export class PhotoDetailComponent implements OnInit, OnChanges {
+export class PhotoDetailComponent implements OnInit {
   
-  @Input() photo: ApodPhoto;
+  photo: ApodPhoto;
   photoDate='';
+  routeDate:string;
+  loadingComplete:boolean=false;
 
-  constructor() { }
+  constructor(private apodService: ApodService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-  }
 
-  ngOnChanges(): void {
-    if (this.photo!==undefined) {
-      this.photoDate = new Date(this.photo.date).toDateString();
-    }
+    this.activatedRoute.params.subscribe(
+      (params:Params)=>{
+        this.loadingComplete=false;
+        this.routeDate=params['routeDate'];
+        this.apodService.getPhotoToday(this.routeDate).subscribe(
+          (response: ApodPhoto) => {
+            console.log(response);
+            this.loadingComplete=true;
+            this.photo = response;
+            this.photoDate = new Date(this.photo.date).toDateString();
+
+          }
+        );
+      }
+    ); 
     
   }
 

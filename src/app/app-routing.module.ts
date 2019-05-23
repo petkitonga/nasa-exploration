@@ -4,8 +4,7 @@ import { ApodComponent } from './apod/apod.component';
 import { AsteroidsComponent } from './asteroids/asteroids.component';
 
 const routes: Routes = [
-  { path: '', component: ApodComponent },
-  { path: 'apod', component: ApodComponent },
+  { path: '', redirectTo: 'apod', pathMatch:'full' },
   { path: 'asteroids', component: AsteroidsComponent },
 ];
 

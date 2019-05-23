@@ -8,26 +8,22 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AsteroidsComponent } from './asteroids/asteroids.component';
-import { ApodComponent } from './apod/apod.component';
-import { PhotoDetailComponent } from './apod/photo-detail/photo-detail.component';
 import { NasaSettings } from './config/nasa.settings';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { ApodModule } from './apod/apod.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AsteroidsComponent,
-    ApodComponent,
-    PhotoDetailComponent,
-    SpinnerComponent
+    AsteroidsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ApodModule,
+    AppRoutingModule
   ],
   providers: [NasaSettings],
   bootstrap: [AppComponent]
